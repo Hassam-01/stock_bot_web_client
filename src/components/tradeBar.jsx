@@ -65,7 +65,7 @@ function TradeBar({ tradeBarData, assets }) {
 
     try {
       const tradeResponse = await axios.post(
-        `${process.env.REACT_APP_API_URL}/trade/${signal.toLowerCase()}/recommendation`,
+        `https://stock-bot-9kw6.onrender.com/api/trade/${signal.toLowerCase()}/recommendation`,
         excuteRecommendationData
       );
       setRecommendation(tradeResponse.data.message); // Store the response
@@ -91,7 +91,7 @@ function TradeBar({ tradeBarData, assets }) {
 
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/trade/${userId}/${signal.toLowerCase()}`,
+        `${process.env.REACT_APP_API_URL}/trade/${userId}/${signal.toLowerCase()}`,
         { dataSend }
       );
       setRecommendation(null); // Clear recommendation after confirming
