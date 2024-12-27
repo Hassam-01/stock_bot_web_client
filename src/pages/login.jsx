@@ -20,6 +20,7 @@ function Login() {
     e.preventDefault();
     const endpoints = isRegister ? "/auth/register" : "/auth/login";
     try {
+      console.log(process.env.REACT_APP_API_URL+endpoints, "url")
       const response = await axios.post(
         `${process.env.REACT_APP_API_URL+endpoints}`,
         formData
