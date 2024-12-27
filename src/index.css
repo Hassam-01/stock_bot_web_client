@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 1s ease forwards;
+  }
+}
+@keyframes slide-left-to-right {
+    from {
+      transform: translateX(-10px);
+    }
+    to {
+      transform: translateX(10px);
+    }
+  }
+  
+  .animate-slide-left-to-right {
+    animation: slide-left-to-right 0.5s ease-in-out infinite alternate;
+  }
