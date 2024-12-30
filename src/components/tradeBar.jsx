@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { setTradeDetail } from '../features/tradeDetail/tradeDetailSlice';
+// import { setTradeDetail } from '../features/tradeDetail/tradeDetailSlice';
 import { toast } from 'react-toastify';
 
 function TradeBar({ tradeBarData, assets }) {
   const { ticker, price, date, signal } = tradeBarData;
   const [quantities, setQuantities] = useState({});
+  const [sellQuantity, setSellQuantity] = useState(1);
   const [buyQuantity, setBuyQuantity] = useState(1);
   const [recommendation, setRecommendation] = useState(null); // Store recommendation response
   const [showConfirm, setShowConfirm] = useState(false); // Toggle confirm button visibility
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const balance = useSelector((state) => state.dashboard.balance);
   const addedTrade = useSelector((state) => state.setTrade.items);
   const [totalQuantity, setTotalQuantity] = useState(0);
@@ -19,10 +20,16 @@ function TradeBar({ tradeBarData, assets }) {
   // const userId = 1;
   const userId = useSelector((state) => state.userId.userId);
   const handleQuantityChange = (item, value) => {
+    const parsedValue = Math.min(Math.max(1, parseInt(value) || 1), item.quantity);
+  
+    // Update the quantities state
     setQuantities((prev) => ({
       ...prev,
-      [item.price]: Math.min(Math.max(1, parseInt(value) || 1), item.quantity),
+      [item.price]: parsedValue,
     }));
+  
+    // Updating the sellQuantity state directly
+    setSellQuantity(parsedValue);
   };
 
   const handleBuyQuantityChange = (value) => {
@@ -80,7 +87,7 @@ function TradeBar({ tradeBarData, assets }) {
       signal === "SELL"
         ? addedTrade.map((item) => ({
             sellPrice: price,
-            sellQuantity: buyQuantity || 1,
+            sellQuantity: sellQuantity,
             sellDate: date,
             sellTicker: item.name,
             sellSignal: signal,
@@ -88,7 +95,6 @@ function TradeBar({ tradeBarData, assets }) {
             sellPriceId: item.price_id,
           }))
         : { price, quantity: buyQuantity, date, signal, ticker };
-
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_API_URL}/trade/${userId}/${signal.toLowerCase()}`,

@@ -54,7 +54,7 @@ function Trading() {
 
     try {
       const response = await axios.post(
-        "https://stock-bot-9kw6.onrender.com/api/signal/recommendation",
+        "http://localhost:5000/api/signal/recommendation",
         {
           ticker: upperTicker,
         },

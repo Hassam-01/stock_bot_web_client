@@ -20,13 +20,11 @@ function Login() {
     e.preventDefault();
     const endpoints = isRegister ? "/auth/register" : "/auth/login";
     try {
-      console.log(process.env.REACT_APP_API_URL+endpoints, "url")
       const response = await axios.post(
         `${process.env.REACT_APP_API_URL+endpoints}`,
         formData
       );
-
-      if (!isRegister) {
+      if (isRegister) {
         toast.success("Registered successfully!");
       } else {
         dispatch(setToken(response.data.token));
@@ -41,7 +39,7 @@ function Login() {
         setRoastMessage(error.response.data.message);
       } else {
         toast.error("Something went wrong. Please try again.");
-        setRoastMessage("Are you even trying? Fix this and try again!");
+        setRoastMessage("Error, !");
       }
     }
   };

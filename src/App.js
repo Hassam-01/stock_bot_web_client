@@ -5,10 +5,12 @@ import Login from './pages/login';
 import CoverPage from './pages/coverPage';
 import ProtectedRoute from './auth/protectedRoute';
 import Trading from './pages/trading';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
     <div>
+      <ToastContainer/>
       <Routes>
         <Route path="/" element={<CoverPage />} />
         <Route path="/login" element={<Login />} />

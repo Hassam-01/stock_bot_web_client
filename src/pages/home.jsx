@@ -6,15 +6,20 @@ import AssetCard from '../components/assestCard';
 import ProfileCard from '../components/profileCard';
 import ActivityTable from '../components/activityTable';
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
 
 function Home() {
   const dispatch = useDispatch();
-
+  const [toastShown, setToastShown] = React.useState(false);
   const userId = useSelector((state) => state.userId.userId);
   // const userId = 1 ; 
 
 useEffect(() => {
   const fetchData = async () => {
+    if(userId && !toast.isActive('login-toast') && !toastShown){
+      toast.success("Logged in successfully!", { toastId: 'login-toast' });
+    }
+    setToastShown(true);
     try {
       const response = await axios.get(`${process.env.REACT_APP_API_URL}/dashboard/${userId}`);
       // ! we are receiving total_investment and total_profit_loss from the server which is the balance

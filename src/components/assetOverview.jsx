@@ -3,20 +3,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addTrade, emptyTrade, removeTrade } from '../features/setTrade/setTradeSlice';
 
 // Child Component for Asset Card
-const AssetCard = ({ asset, isSelected, onClick }) => (
-  <div
-    onClick={() => onClick(asset)}
-    className={`relative flex-shrink-0 w-40 rounded-lg shadow-md p-3 transition-shadow duration-200 cursor-pointer 
-      ${isSelected ? 'bg-purple-800 text-white' : 'bg-purple-600 text-white hover:shadow-lg'}`}
-  >
-    <p className="text-sm font-medium">
-      Bought: <span className="font-semibold">${asset.price}</span>
-    </p>
-    <p className="text-sm font-medium">
-      Quantity: <span className="font-semibold">{asset.quantity}</span>
-    </p>
-  </div>
-);
+const AssetCard = ({ asset, isSelected, onClick }) => {
+  return (
+    asset.quantity > 0 && (
+      <div
+        onClick={() => onClick(asset)}
+        className={`relative flex-shrink-0 w-40 rounded-lg shadow-md p-3 transition-shadow duration-200 cursor-pointer 
+          ${isSelected ? 'bg-purple-800 text-white' : 'bg-purple-600 text-white hover:shadow-lg'}`}
+      >
+        <p className="text-sm font-medium">
+          Bought: <span className="font-semibold">${asset.price}</span>
+        </p>
+        <p className="text-sm font-medium">
+          Quantity: <span className="font-semibold">{asset.quantity}</span>
+        </p>
+      </div>
+    )
+  );
+};
 
 // Main Component
 function AssetOverview({ assets }) {
