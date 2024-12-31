@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
-// import { setTradeDetail } from '../features/tradeDetail/tradeDetailSlice';
+import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
 function TradeBar({ tradeBarData, assets }) {

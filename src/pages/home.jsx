@@ -6,7 +6,7 @@ import AssetCard from '../components/assestCard';
 import ProfileCard from '../components/profileCard';
 import ActivityTable from '../components/activityTable';
 import axios from 'axios';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast} from 'react-toastify';
 
 function Home() {
   const dispatch = useDispatch();
