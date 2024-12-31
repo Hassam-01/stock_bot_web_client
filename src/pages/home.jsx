@@ -58,7 +58,6 @@ useEffect(() => {
   };
 
   // * data to be passed to asset card = name = asset.company_name, price = asset.price, icon = '/stock-icon.png';
-  
   const assets = Array.isArray(dataAssets)
   ? dataAssets.flatMap((assetGroup) =>
       assetGroup.assets.map((individualAsset) => ({
@@ -91,7 +90,7 @@ useEffect(() => {
   
   return (
     <div className="dashboard-container bg-purple-50 h-screen flex p-8">
-      <div className="flex gap-8 w-full">
+      <div className="flex gap-8 w-full ">
         {/* Sidebar */}
         <Sidebar className="h-full" />
   
@@ -102,15 +101,17 @@ useEffect(() => {
           </header>
   
           {/* Assets Section */}
-          <section className="mb-8">
-            <h2 className="text-xl font-semibold text-gray-700 mb-4">Assets</h2>
-            <div className="grid grid-cols-3 gap-6">
-              {assets.map((asset) => {
-                return <AssetCard key={asset.id} asset={asset} />;
-              })}
-            </div>
-          </section>
-          {/* Activity Section */}
+<section className="mb-8 w-fit">
+  <h2 className="text-xl font-semibold text-gray-700 mb-4">Assets</h2>
+  <div
+    className="grid grid-flow-col auto-cols-max gap-6 overflow-x-auto "
+    style={{ maxHeight: '400px', display: 'grid', gridTemplateRows: 'repeat(2, 1fr)', gridAutoFlow: 'column' }}
+  >
+    {assets.map((asset) => (
+      <AssetCard key={asset.stock_id} asset={asset} />
+    ))}
+  </div>
+</section>          {/* Activity Section */}
           <ActivityTable activities={activities} />
         </main>
   

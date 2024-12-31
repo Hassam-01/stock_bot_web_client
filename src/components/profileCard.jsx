@@ -6,7 +6,7 @@ const ProfileCard = ({ user }) => {
   const { username, joinDate, assetsOwned, assetsTotal } = user;
 const navigate = useNavigate();
   return (
-    <div className="w-1/6 bg-gradient-to-b from-purple-50 to-white shadow-md rounded-lg p-6 flex flex-col justify-between">
+    <div className="w-1/4 bg-gradient-to-b from-purple-50 to-white shadow-md rounded-lg p-6 flex flex-col justify-between">
       {/* Profile Header */}
       <div className="flex flex-col items-center text-center">
         <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide">
@@ -24,7 +24,7 @@ const navigate = useNavigate();
       <div className="mt-6">
         <p className="text-sm font-bold text-gray-500 mb-4">Account</p>
         <div className="flex justify-between items-center mb-3">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 mr-2">
             <span className="text-gray-700 font-semibold text-sm">Joined</span>
           </div>
           <span className="font-semibold text-gray-700 text-sm bg-purple-100 px-2 py-1 rounded-lg">

@@ -47,7 +47,7 @@ function AssetOverview({ assets }) {
   };
 
   return (
-    <div className="p-4 bg-white text-purple-600 rounded-lg shadow-md max-w-full -mt-8">
+    <div className="p-4 bg-white text-purple-600 rounded-lg shadow-md max-w-full -mt-8 overflow-y-hidden">
       <h2 className="text-lg font-semibold mb-3">Asset Overview</h2>
       <div className="flex gap-4 overflow-x-auto scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-purple-300 p-2">
         {assets && assets.length > 0 ? (
