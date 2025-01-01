@@ -71,7 +71,8 @@ function TradeBar({ tradeBarData, assets }) {
 
     try {
       const tradeResponse = await axios.post(
-        `https://stock-bot-9kw6.onrender.com/api/trade/${signal.toLowerCase()}/recommendation`,
+        // `https://stock-bot-9kw6.onrender.com/api/trade/${signal.toLowerCase()}/recommendation`,
+        `http://localhost:5000/api/trade/${signal.toLowerCase()}/recommendation`,
         excuteRecommendationData
       );
       setRecommendation(tradeResponse.data.message); // Store the response

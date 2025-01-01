@@ -19,21 +19,35 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const endpoints = isRegister ? "/auth/register" : "/auth/login";
+    console.log("hi")
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_API_URL+endpoints}`,
         formData
       );
       if (isRegister) {
-        toast.success("Registered successfully!");
+        // toast.success("Registered successfully!");
       } else {
         dispatch(setToken(response.data.token));
         toast.success("Logged in successfully!");
       }
       dispatch(setUsername(formData.username));
       dispatch(setUserId(response.data.id));
-      navigate("/home");
-    } catch (error) {
+      if(isRegister){
+        // refresh window
+        alert("Registered successfully! Please login now");
+        
+        // pause for 2 seconds
+        setTimeout(() => {
+        }, 700);
+
+        window.location.reload();
+        
+        // show alert please login now
+        
+      } else{
+        navigate("/home");}
+      } catch (error) {
       if (error.response) {
         toast.error(error.response.data.message);
         setRoastMessage(error.response.data.message);
