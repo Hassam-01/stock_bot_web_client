@@ -3,7 +3,6 @@ import icon from '../assets/icon.jpg';
 const AssetCard = ({ asset }) => {
   // for now change is ignored
   const { name, price, quantity } = asset;
-  console.log(asset)
   return (
     <div className="p-4 bg-gradient-to-b from-blue-50 to-white shadow-md rounded-lg flex items-center gap-4">
       {/* Icon Section */}
