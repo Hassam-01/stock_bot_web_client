@@ -95,10 +95,12 @@ function TradeBar({ tradeBarData, assets }) {
             sellPriceId: item.price_id,
           }))
         : { price, quantity: buyQuantity, date, signal, ticker };
+        if(totalSellCost <= balance){
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/trade/${userId}/${signal.toLowerCase()}`,
-        { dataSend }
+
+        const response = await axios.post(
+          `${process.env.REACT_APP_API_URL}/trade/${userId}/${signal.toLowerCase()}`,
+          { dataSend }
       );
       setRecommendation(null); // Clear recommendation after confirming
       setShowConfirm(false); // Hide confirm button
@@ -106,8 +108,11 @@ function TradeBar({ tradeBarData, assets }) {
     } catch (error) {
       console.error("Error confirming trade:", error);
     }
+  }else{
+    toast.error("Insufficient Balance");
+  }
   };
-
+  
   return (
     <div className="flex flex-col bg-white p-4 rounded-lg shadow-lg w-1/3 mx-auto">
       <div className="mb-4">
