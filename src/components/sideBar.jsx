@@ -40,6 +40,10 @@ function SideBar() {
             <button
               key={name}
               className="flex items-center gap-3 w-full text-left text-gray-700 hover:text-purple-700 hover:bg-purple-100 font-medium px-4 py-2 rounded-lg transition-all"
+              onClick={() => {
+                if (name === "Home") navigate(`/${name.toLowerCase()}`);
+                if (name === "Live Trade") navigate("/trading");
+              }}
             >
               <span className="text-purple-600 text-lg">{icon}</span>
               {name}

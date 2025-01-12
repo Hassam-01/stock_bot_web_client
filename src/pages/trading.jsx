@@ -186,7 +186,7 @@ function Trading() {
                 </div>
               )}
             </section>
-            <AssetOverview className="flex-1" assets={filteredAssets} />
+            <AssetOverview assets={filteredAssets} />
           </div>
           <div className=" md:flex-row flex flex-col gap-4 mt-4 md:items-end items-center">
             {predictionData && (
