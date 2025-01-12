@@ -60,6 +60,14 @@ function Home() {
         }))
       )
     : [];
+  const dummyAssets = Array.from({ length: 20 }, (_, index) => ({
+    name: `Asset ${index + 1}`,
+    price: (Math.random() * 100).toFixed(2),
+    quantity: Math.floor(Math.random() * 100),
+    stock_id: `dummy-${index + 1}`,
+  }));
+
+  assets.push(...dummyAssets);
 
   const activities = userActivities.map((activity) => {
     const matchingAsset = assets.find(
@@ -125,25 +133,20 @@ function Home() {
           <h1 className="text-3xl font-bold text-gray-800">Dashboard</h1>
         </header>
 
-        <section className="mb-8 w-fit">
+        <section className="mb-8">
           <h2 className="text-xl font-semibold text-gray-700 mb-4">Assets</h2>
           <div
-            className="grid grid-flow-col auto-cols-max gap-6 overflow-x-auto"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
             style={{
-              maxHeight: "400px",
-              display: "grid",
-              gridTemplateRows: "repeat(2, 1fr)",
-              gridAutoFlow: "column",
+              maxHeight: "250px",
+              overflowY: "auto",
             }}
           >
-            {assets.length > 0 ? (
-              assets.map((asset) => (
-                <AssetCard key={asset.stock_id} asset={asset} />
-              ))
-            ) : (
-              "No assets found"
-            )}
-
+            {assets.length > 0
+              ? assets.map((asset) => (
+                  <AssetCard key={asset.stock_id} asset={asset} />
+                ))
+              : "No assets found"}
           </div>
         </section>
 
