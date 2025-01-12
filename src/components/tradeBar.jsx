@@ -95,7 +95,7 @@ function TradeBar({ tradeBarData, assets }) {
             sellPriceId: item.price_id,
           }))
         : { price, quantity: buyQuantity, date, signal, ticker };
-        if(totalSellCost <= balance){
+    if(totalBuyCost <= balance){
     try {
 
         const response = await axios.post(

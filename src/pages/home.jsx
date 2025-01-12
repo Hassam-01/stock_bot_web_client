@@ -60,14 +60,6 @@ function Home() {
         }))
       )
     : [];
-  const dummyAssets = Array.from({ length: 20 }, (_, index) => ({
-    name: `Asset ${index + 1}`,
-    price: (Math.random() * 100).toFixed(2),
-    quantity: Math.floor(Math.random() * 100),
-    stock_id: `dummy-${index + 1}`,
-  }));
-
-  assets.push(...dummyAssets);
 
   const activities = userActivities.map((activity) => {
     const matchingAsset = assets.find(
