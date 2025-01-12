@@ -114,7 +114,7 @@ function TradeBar({ tradeBarData, assets }) {
   };
   
   return (
-    <div className="flex flex-col bg-white p-4 rounded-lg shadow-lg w-1/3 mx-auto">
+    <div className="flex flex-col bg-white p-4 rounded-lg shadow-lg w-full md:w-1/3 mx-auto">
       <div className="mb-4">
         <label htmlFor="quantity" className="block mb-2 text-sm font-semibold text-gray-600">
           Trade Bar: {signal}

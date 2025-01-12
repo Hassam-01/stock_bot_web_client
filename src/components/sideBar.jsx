@@ -29,13 +29,13 @@ function SideBar() {
   ];
 
   return (
-    <aside className="bg-gradient-to-b from-purple-50 to-white shadow-lg w-64 p-6 flex flex-col justify-between">
+    <aside className="bg-gradient-to-b from-purple-50 to-white shadow-lg w-64 p-6 flex flex-col justify-between h-full ">
       {/* Header Section */}
       <div>
-        <div className="text-center mb-16">
+        <div className="md:text-center md:mb-16 mb-8 ml-8 items-center md:mt-0 md:ml-0 -mt-1">
           <h2 className="text-2xl font-bold text-purple-700 tracking-widest">Menu Board</h2>
         </div>
-        <nav className="space-y-4">
+        <nav className="md:space-y-4 space-y-8">
           {menuItems.map(({ name, icon }) => (
             <button
               key={name}
@@ -61,7 +61,7 @@ function SideBar() {
 
       {/* Footer Section */}
       <div className="mt-8 text-center text-gray-500 text-sm">
-        <p>&copy; 2024 TeamSastaAI</p>
+        <p>&copy; 2025 TeamSastaAI</p>
       </div>
     </aside>
   );
