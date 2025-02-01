@@ -50,7 +50,7 @@ Stock Bot is a stock trading front-end application built with React, Tailwind CS
 5. Receive buy/sell recommendations and execute trades accordingly.
 
 **Repo Combined Backend/Frontend**: 
-  - [Combined Repo]((https://github.com/Hassam-01/stock_bot_app))
+  - [Combined Repo](https://github.com/Hassam-01/stock_bot_app)
 
 ---
 ### Connect
